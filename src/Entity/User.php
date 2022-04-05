@@ -45,7 +45,12 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     private $created_at;
 
     #[ORM\Column(type: 'integer', options: ['default'=> 50])]
-    private $token;
+    private $token = 50;
+
+    public function __construct()
+    {
+        $this->created_at = new \DateTimeImmutable();
+    }
 
     public function getId(): ?int
     {
