@@ -1,0 +1,82 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello BlackjackController!{% endblock %}
+
+{% block body %}
+<style>
+    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
+    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
+</style>
+
+<div class="example-wrapper">
+    <div class="container">
+        <div class="row">
+            <h1>Bienvenue sur notre table de BlackJack ! </h1>
+        </div>
+        <div class="row" id="table">
+            <div class="card col-6">
+                <p>Joueur: </p>
+            </div>
+            <div class="card col-6">
+                <p>Banque</p>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-5"></div>
+            <div class="col-5"></div>
+        </div>
+        <div class="score">
+            <table class="table">
+                <thead class="thead-dark">
+                <tr>
+                    <th class="col-4"></th>
+                    <th class="col-4">Score de la manche</th>
+                    <th class="col-4">Nombre de victoire</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td class="col-4">Joueur</td>
+                    <td class="col-4">Score du joueur sur la manche</td>
+                    <td class="col-4"> Nombre de victoire du joueur</td>
+                </tr>
+                <tr>
+                    <td class="col-4">Banque</td>
+                    <td class="col-4">Score de la banque sur la manche</td>
+                    <td class="col-4"> Nombre de victoire de la banque</td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+
+
+    <p> {% for card in cards %}
+            {{ card }}<br>
+        {% endfor %}</p>
+        <p> {% for selected_card in selected_cards %}
+            {{ selected_card }}<br>
+        {% endfor %}</p>
+    <p> {% for type in types %}
+            {{ type }}<br>
+        {% endfor %}</p>
+    {% if winner == false %}
+        <div class="alert alert-danger">
+            <p>La banque gagne! 🙁</p>
+        </div>
+    {% else %}
+        <div class="alert alert-success">
+            <p>♫♪♫ Le joueur gagne! ♫♪♫</p>
+        </div>
+        {% endif %}
+
+
+
+    </div>
+
+    This friendly message is coming from:
+    <ul>
+        <li>Your controller at <code><a href="{{ '/home/richard/Documents/Casino/Casino/src/Controller/BlackjackController.php'|file_link(0) }}">src/Controller/BlackjackController.php</a></code></li>
+        <li>Your template at <code><a href="{{ '/home/richard/Documents/Casino/Casino/templates/blackjack/index.html.twig'|file_link(0) }}">templates/blackjack/index.html.twig</a></code></li>
+    </ul>
+</div>
+{% endblock %}
